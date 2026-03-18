@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         if (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) == null) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragmentContainerView, DieFragment.newInstance(20))
+                .add(R.id.fragmentContainerView, DieFragment.newInstance(6))
+                .add(R.id.fragmentContainerView2, DieFragment.newInstance(6))
                 .commit()
         }
 
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
                 .findFragmentById(R.id.fragmentContainerView)?.run {
                     (this as DieFragment).throwDie()
             }
+
+            supportFragmentManager
+                .findFragmentById(R.id.fragmentContainerView2)?.run {
+                    (this as DieFragment).throwDie()
+                }
         }
     }
 }
