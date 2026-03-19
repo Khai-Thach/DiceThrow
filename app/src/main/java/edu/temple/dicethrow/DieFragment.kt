@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import kotlin.random.Random
 
 class DieFragment : Fragment() {
@@ -19,6 +20,8 @@ class DieFragment : Fragment() {
 
     var dieSides: Int = 6
 
+    lateinit var diceViewModel: DiceViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -29,6 +32,8 @@ class DieFragment : Fragment() {
         savedInstanceState?.run {
             currentRoll = getInt(ROLL_KEY)
         }
+
+        diceViewModel = ViewModelProvider(requireActivity())[DiceViewModel::class.java]
     }
 
     override fun onCreateView(
